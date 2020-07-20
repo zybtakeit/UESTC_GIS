@@ -3,8 +3,9 @@
 #include <QtWidgets/QWidget>
 #include "ui_UESTC_GIS.h"
 #include "SatCoordTrans.h"
-#include "QCompare.h"
-
+#include "LMS_Compare.h"
+#include "LMS_Compare_2.h"
+#include "RPCCorrection.h"
 #include <math.h>
 #include <qgsmapcanvas.h>
 #include <qgsmaplayer.h>

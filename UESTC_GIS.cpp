@@ -124,8 +124,12 @@ void UESTC_GIS::transCoordination() {
 }
 
 void UESTC_GIS::compareImages() {
-	QCompare* window = new QCompare(this);
+	LMS_Compare_2* window = new LMS_Compare_2(this);
 	window->show();
+	/*LMS_Compare* window = new LMS_Compare(this);
+	window->show();*/
+	//RPCCorrection* window = new RPCCorrection(this);
+	//window->show();
 }
 
 void UESTC_GIS::addListWidgetItem() {
@@ -163,7 +167,7 @@ void UESTC_GIS::listWidgetItemDoubleClicked(QListWidgetItem* item) {
 }
 
 void UESTC_GIS::openImage() {
-	QString fileUrl = QFileDialog::getOpenFileName(this, "选择一个或多个文件", "", "Images(*.tif)");//多选文件
+	QString fileUrl = QFileDialog::getOpenFileName(this, "选择一个或多个文件", "", "Images(*.tif);;BMP(*.bmp)");//多选文件
 	if (fileUrl.isEmpty())
 		return;
 	QFileInfo FileInfo = QFileInfo(fileUrl);
@@ -182,6 +186,7 @@ void UESTC_GIS::changeRasterLayer(QString url, QString basename) {
 		QMessageBox::critical(this, "error", "layer is invalid");
 		return;
 	}
+
 	if (mapCanvasLayerSet.length() == 0) {
 		mapCanvasLayerSet.append(rasterLayer);
 	}
@@ -198,6 +203,14 @@ void UESTC_GIS::changeRasterLayer(QString url, QString basename) {
 	mapCanvas->setVisible(true);
 	mapCanvas->freeze(false); 
 	mapCanvas->refresh();
+	/*mapCanvasLayerSet.append(rasterLayer);
+	mapCanvas->setExtent(rasterLayer->extent());
+	mapCanvas->setLayers(mapCanvasLayerSet);
+	mapCanvas->setVisible(true);
+	mapCanvas->freeze(false);
+	mapCanvas->setVisible(true);
+	mapCanvas->freeze(false);
+	mapCanvas->refresh();*/
 }
 
 void UESTC_GIS::mouseMove(const QgsPointXY& p) {

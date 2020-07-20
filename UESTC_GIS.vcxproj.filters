@@ -23,6 +23,12 @@
       <Extensions>qrc;*</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
+    <Filter Include="Header Files\LMS_Compare">
+      <UniqueIdentifier>{8f8f79fc-2bc1-4993-8dbd-760dd991a74b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\LMS_Compare">
+      <UniqueIdentifier>{20397e2a-f750-47d5-8df2-11b18dffb059}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -31,16 +37,43 @@
     <ClCompile Include="UESTC_GIS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="QCompare.cpp">
+    <ClCompile Include="RPCCorrection.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LMS_Compare.cpp">
+      <Filter>Source Files\LMS_Compare</Filter>
+    </ClCompile>
+    <ClCompile Include="LMS_Compare_ChooseImages.cpp">
+      <Filter>Source Files\LMS_Compare</Filter>
+    </ClCompile>
+    <ClCompile Include="LMS_GraphicView.cpp">
+      <Filter>Source Files\LMS_Compare</Filter>
+    </ClCompile>
+    <ClCompile Include="LMS_Compare_Util.cpp">
+      <Filter>Source Files\LMS_Compare</Filter>
+    </ClCompile>
+    <ClCompile Include="LMS_Compare_2.cpp">
+      <Filter>Source Files\LMS_Compare</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="UESTC_GIS.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="QCompare.h">
+    <QtMoc Include="RPCCorrection.h">
       <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="LMS_Compare.h">
+      <Filter>Header Files\LMS_Compare</Filter>
+    </QtMoc>
+    <QtMoc Include="LMS_Compare_ChooseImages.h">
+      <Filter>Header Files\LMS_Compare</Filter>
+    </QtMoc>
+    <QtMoc Include="LMS_GraphicView.h">
+      <Filter>Header Files\LMS_Compare</Filter>
+    </QtMoc>
+    <QtMoc Include="LMS_Compare_2.h">
+      <Filter>Header Files\LMS_Compare</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -48,6 +81,18 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="QCompare.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="RPCCorrection.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="LMS_Compare.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="LMS_Compare_ChooseImages.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="LMS_Compare_2.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -59,6 +104,9 @@
   <ItemGroup>
     <ClInclude Include="SatCoordTrans.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LMS_Compare_Util.h">
+      <Filter>Header Files\LMS_Compare</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

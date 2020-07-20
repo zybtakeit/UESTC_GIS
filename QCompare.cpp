@@ -6,6 +6,30 @@ QCompare::QCompare(QWidget *parent)
 	ui.setupUi(this);
 	iniUI();
 	iniSignalSlots();
+
+	QgsRasterLayer* rasterLayer = new QgsRasterLayer(url, basename, "gdal", QgsRasterLayer::LayerOptions());
+	if (!rasterLayer->isValid())
+	{
+		QMessageBox::critical(this, "error", "layer is invalid");
+		return;
+	}
+
+	if (mapCanvasLayerSet.length() == 0) {
+		mapCanvasLayerSet.append(rasterLayer);
+	}
+	else {
+		qDeleteAll(mapCanvasLayerSet);
+		mapCanvasLayerSet.clear();
+		mapCanvasLayerSet.append(rasterLayer);
+	}
+	QgsRectangle rec = rasterLayer->extent();
+	mapCanvas->setExtent(rasterLayer->extent());
+	mapCanvas->setLayers(mapCanvasLayerSet);
+	mapCanvas->setVisible(true);
+	mapCanvas->freeze(false);
+	mapCanvas->setVisible(true);
+	mapCanvas->freeze(false);
+	mapCanvas->refresh();
 }
 
 QCompare::~QCompare()
@@ -15,6 +39,16 @@ QCompare::~QCompare()
 void QCompare::iniUI() {
 	QWidget* w = new QWidget();
 	this->setCentralWidget(w);
+
+	action_addListWidgetItem = new QAction(tr("&添加图像"), this);
+
+	//菜单栏设置
+	menuBar = new QMenuBar();
+	QMenu* menu_1 = new QMenu("图像");
+	menu_1->addAction(action_addListWidgetItem);
+	QMenu* menu_2 = new QMenu("其他功能");
+	menuBar->addMenu(menu_1);
+
 	VLayout1 = new QVBoxLayout();
 	VLayout2 = new QVBoxLayout();
 	VLayout2_1 = new QVBoxLayout();
@@ -48,9 +82,14 @@ void QCompare::iniUI() {
 	HLayout2_1->addWidget(slider);
 	groupBox->setLayout(HLayout2_1);
 	groupBox->setFixedHeight(60);
+
+	mapCanvas = new QgsMapCanvas();
+	mapCanvas->enableAntiAliasing(true);
+	mapCanvas->setCanvasColor(QColor(255, 255, 0));
+	mapCanvas->setVisible(true);
+
 	VLayout2->addWidget(groupBox);
-	VLayout2->addWidget(label);
-	VLayout2->addWidget(label);
+	VLayout2->addWidget(mapCanvas);
 	VLayout1->addWidget(treeWidget);
 	HLayout->addLayout(VLayout1);
 	HLayout->addLayout(VLayout2);

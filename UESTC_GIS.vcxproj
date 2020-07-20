@@ -38,6 +38,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>D:\OSGeo4W64\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\OSGeo4W64\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
@@ -59,7 +63,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
-      <AdditionalIncludeDirectories>D:\OSGeo4W\apps\qgis\include;D:\OSGeo4W\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\OSGeo4W\apps\qgis\include;D:\OSGeo4W\include;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_USE_MATH_DEFINES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -76,7 +80,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
-      <AdditionalIncludeDirectories>D:\OSGeo4W64\include;D:\OSGeo4W64\apps\qgis\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\OSGeo4W64\include;D:\OSGeo4W64\apps\qgis\include;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_USE_MATH_DEFINES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Optimization>Disabled</Optimization>
     </ClCompile>
@@ -85,26 +89,40 @@
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>D:\OSGeo4W64\apps\qgis\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>qgis_core.lib;qgis_app.lib;qgis_gui.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>gdal_i.lib;qgis_core.lib;qgis_app.lib;qgis_gui.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="LMS_Compare.cpp" />
+    <ClCompile Include="LMS_Compare_2.cpp" />
+    <ClCompile Include="LMS_Compare_ChooseImages.cpp" />
+    <ClCompile Include="LMS_Compare_Util.cpp" />
+    <ClCompile Include="LMS_GraphicView.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="QCompare.cpp" />
+    <ClCompile Include="RPCCorrection.cpp" />
     <ClCompile Include="UESTC_GIS.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="UESTC_GIS.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="LMS_Compare.ui" />
+    <QtUic Include="LMS_Compare_2.ui" />
+    <QtUic Include="LMS_Compare_ChooseImages.ui" />
     <QtUic Include="QCompare.ui" />
+    <QtUic Include="RPCCorrection.ui" />
     <QtUic Include="UESTC_GIS.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="UESTC_GIS.qrc" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="QCompare.h" />
+    <QtMoc Include="RPCCorrection.h" />
+    <QtMoc Include="LMS_Compare.h" />
+    <QtMoc Include="LMS_Compare_ChooseImages.h" />
+    <QtMoc Include="LMS_GraphicView.h" />
+    <QtMoc Include="LMS_Compare_2.h" />
+    <ClInclude Include="LMS_Compare_Util.h" />
     <ClInclude Include="SatCoordTrans.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
